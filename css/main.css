@@ -28,6 +28,7 @@ a {
 
 aside {
     padding: 100px;
+    padding-right: 0;
     color: white;
     height: 100vh;
     position: sticky;
@@ -45,14 +46,39 @@ aside {
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 25px;
 }
 
 .menu-button {
     background-color: transparent;
     border: 0;
     color: white;
-    font-size: 17px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+}
+
+.cart-button {
+    margin-top: 30px;
+}
+
+.little-number {
+    background-color: white;
+    padding: 0 2px;
+    border-radius: 3px;
+    color: rgb(36, 36, 36);
+}
+
+.menu-button.active {
+    background-color: white;
+    width: 100%;
+    color: rgb(98, 98, 98);
 }
 
 .footer-text {
@@ -114,4 +140,97 @@ main {
 .product-add:hover {
     background-color: rgb(160, 160, 160);
     color: rgb(255, 255, 255);
+}
+
+/** CART **/
+
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.empty-cart {
+    color: rgb(98, 98, 98);
+}
+
+.products-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-cart {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(143, 143, 143);
+    color: white;
+    padding: 10px;
+    padding-right: 50px;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.image-product-cart {
+    max-width: 100px;
+    border-radius: 15px;
+}
+
+.product-cart small {
+    font-size: 14px;
+}
+
+.delete-product-cart {
+    border: none;
+    background-color: transparent;
+    color: rgb(184, 39, 39);
+    cursor: pointer;
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-actions-right {
+    display: flex;
+}
+
+.cart-actions-total {
+    display: flex;
+    gap: 10px;
+    border: none;
+    background-color: rgb(225, 225, 225);
+    color: rgb(98, 98, 98);
+    padding: 10px;
+    text-transform: uppercase;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.cart-clear {
+    border: none;
+    background-color: rgb(225, 225, 225);
+    color: rgb(98, 98, 98);
+    border-radius: 10px;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.cart-actions-buy {
+    border: none;
+    background-color: rgb(143, 143, 143);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/** CLASS TO HIDE **/
+
+.disabled {
+    display: none;
 }
