@@ -6,7 +6,7 @@ const productsArray = [
         image: "./img/rare-sneakers-01.jpg",
         category: {
             name: "Rare Sneaker",
-            id: "Rare Sneaker"
+            id: "RareSneaker"
         },
         price: 400
     },
@@ -17,7 +17,7 @@ const productsArray = [
         image: "./img/rare-sneakers-02.jpg",
         category: {
             name: "Rare Sneaker",
-            id: "Rare Sneaker"
+            id: "RareSneaker"
         },
         price: 480
     },
@@ -28,7 +28,7 @@ const productsArray = [
         image: "./img/rare-sneakers-04.jpg",
         category: {
             name: "Rare Sneaker",
-            id: "Rare Sneaker"
+            id: "RareSneaker"
         },
         price: 380
     },
@@ -39,7 +39,7 @@ const productsArray = [
         image: "./img/rare-sneakers-04.jpg",
         category: {
             name: "Rare Sneaker",
-            id: "Rare Sneaker"
+            id: "RareSneaker"
         },
         price: 185
     },
@@ -50,7 +50,7 @@ const productsArray = [
         image: "./img/rare-sneakers-05.jpg",
         category: {
             name: "Rare Sneaker",
-            id: "Rare Sneaker"
+            id: "RareSneaker"
         },
         price: 200
     },
@@ -61,7 +61,7 @@ const productsArray = [
         image: "./img/sporty-sneakers-01.jpg",
         category: {
             name: "Sporty Sneaker",
-            id: "Sporty Sneaker"
+            id: "SportySneaker"
         },
         price: 700
     },
@@ -72,7 +72,7 @@ const productsArray = [
         image: "./img/sporty-sneakers-02.jpg",
         category: {
             name: "Sporty Sneaker",
-            id: "Sporty Sneaker"
+            id: "SportySneaker"
         },
         price: 350
     },
@@ -83,7 +83,7 @@ const productsArray = [
         image: "./img/sporty-sneakers-03.jpg",
         category: {
             name: "Sporty Sneaker",
-            id: "Sporty Sneaker"
+            id: "SportySneaker"
         },
         price: 175
     },
@@ -94,7 +94,7 @@ const productsArray = [
         image: "./img/sporty-sneakers-04.jpg",
         category: {
             name: "Sporty Sneaker",
-            id: "Sporty Sneaker"
+            id: "SportySneaker"
         },
         price: 500
     },
@@ -105,7 +105,7 @@ const productsArray = [
         image: "./img/sporty-sneakers-05.jpg",
         category: {
             name: "Sporty Sneaker",
-            id: "Sporty Sneaker"
+            id: "SportySneaker"
         },
         price: 280
     },
@@ -116,7 +116,7 @@ const productsArray = [
         image: "./img/urban-style-sneakers-01.jpg",
         category: {
             name: "Urban Sneaker",
-            id: "Urban Sneaker"
+            id: "UrbanSneaker"
         },
         price: 650
     },
@@ -127,7 +127,7 @@ const productsArray = [
         image: "./img/urban-style-sneakers-02.jpg",
         category: {
             name: "Urban Sneaker",
-            id: "Urban Sneaker"
+            id: "UrbanSneaker"
         },
         price: 780
     },
@@ -138,7 +138,7 @@ const productsArray = [
         image: "./img/urban-style-sneakers-03.jpg",
         category: {
             name: "Urban Sneaker",
-            id: "Urban Sneaker"
+            id: "UrbanSneaker"
         },
         price: 360
     },
@@ -149,7 +149,7 @@ const productsArray = [
         image: "./img/urban-style-sneakers-04.jpg",
         category: {
             name: "Urban Sneaker",
-            id: "Urban Sneaker"
+            id: "UrbanSneaker"
         },
         price: 220
     },
@@ -160,18 +160,22 @@ const productsArray = [
         image: "./img/urban-style-sneakers-05.jpg",
         category: {
             name: "Urban Sneaker",
-            id: "Urban Sneaker"
+            id: "UrbanSneaker"
         },
         price: 480
     },
 
-]
+];
 
 const productsContainer = document.querySelector("#products-container");
+const categoryButton = document.querySelectorAll(".category-button");
 
-function productsLoad() {
 
-    productsArray.forEach(product => {
+function productsLoad(chooseProducts) {
+
+    productsContainer.innerHTML = "";
+
+    chooseProducts.forEach(product => {
 
         const div = document.createElement("div");
         div.classList.add("product");
@@ -180,15 +184,24 @@ function productsLoad() {
             <div class="product-details">
                 <h3 class="product-title">${product.title}</h3>
                 <p class="product-price">${product.price}</p>
-                <button class="product-add" id="${product.id}">Add</button>
+                <button id="${product.id}" class="product-add">Add</button>
             </div>
         `;
 
         productsContainer.append(div);
-
     })
-
 }
 
-productsLoad();
+productsLoad(productsArray);
 
+categoryButton.forEach(button =>{
+    button.addEventListener("click", (e) =>{
+
+        categoryButton.forEach(button => button.classList.remove("active")); 
+        e.currentTarget.classList.add("active");
+
+        const buttonProducts = productsArray.filter(productsArray => product.category.id === e.currentTarget.id);
+        productsLoad(buttonProducts);
+
+    })
+}) 
