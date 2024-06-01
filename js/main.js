@@ -1,4 +1,4 @@
-const productsArray = [
+const products = [
 
     {
         id: "RareSneaker-01",
@@ -167,6 +167,116 @@ const productsArray = [
 
 ];
 
+
+
+
+
+
+
+
+
+
+
+
+
+const productsContainer = document.querySelector("#products-container");
+const categoryButton = document.querySelectorAll(".category-button");
+
+function productsLoad(chooseProducts) {
+
+    productsContainer.innerHTML = "";
+
+    chooseProducts.forEach(product => {
+
+        const div = document.createElement("div");
+        div.classList.add("product");
+        div.innerHTML = `
+            <img class="product-image" src="${product.image}" alt="${product.title}">
+            <div class="product-details">
+                <h3 class="product-title">${product.title}</h3>
+                <p class="product-price">${product.price}</p>
+                <button class="product-add"  id="${product.id}">Add</button>
+            </div>
+        `;
+
+        productsContainer.append(div);
+    
+    })  
+
+}
+
+productsLoad(products);
+
+categoryButton.forEach(button => {
+    button.addEventListener("click", (e) => {
+        
+        categoryButton.forEach(button => button.classList.remove("active"));
+        e.currentTarget.classList.add("active");
+
+        if (e.currentTarget.id != "allproducts") {
+            const buttonProducts = products.filter(product => product.category.id === e.currentTarget.id);
+        productsLoad(buttonProducts);
+        } else {
+            productsLoad(products);
+        }
+        
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 const productsContainer = document.querySelector("#products-container");
 const categoryButton = document.querySelectorAll(".category-button");
 
@@ -200,8 +310,21 @@ categoryButton.forEach(button =>{
         categoryButton.forEach(button => button.classList.remove("active")); 
         e.currentTarget.classList.add("active");
 
-        const buttonProducts = productsArray.filter(productsArray => product.category.id === e.currentTarget.id);
-        productsLoad(buttonProducts);
+        if(e.currentTarget.id != "all-products") {
+
+            const categoryProducts = productsArray.find(productsArray => product.category.id === e.currentTarget.id);
+            
+            principalTitle.innerHTML = "All the products!"; 
+
+            const buttonProducts = productsArray.filter(productsArray => product.category.id === e.currentTarget.id);
+            productsLoad(buttonProducts);
+        } else {
+            principalTitle.innerHTML = "All the products!";
+            productsLoad(productsArray);
+        }
+
+        
 
     })
 }) 
+*/
