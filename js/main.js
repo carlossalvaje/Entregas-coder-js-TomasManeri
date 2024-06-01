@@ -182,6 +182,7 @@ const products = [
 const productsContainer = document.querySelector("#products-container");
 const categoryButton = document.querySelectorAll(".category-button");
 const principalTitle = document.querySelector("#principal-title");
+let addButton = document.querySelectorAll(".product-add");
 
 function productsLoad(chooseProducts) {
 
@@ -204,6 +205,7 @@ function productsLoad(chooseProducts) {
     
     })  
 
+    refreshAddButtons();
 }
 
 productsLoad(products);
@@ -228,6 +230,29 @@ categoryButton.forEach(button => {
     })
 });
 
+function refreshAddButtons() {
+    addButton = document.querySelectorAll(".product-add");
+
+    addButton.forEach(button => {
+        button.addEventListener("click", addToCart);
+    });
+}
+
+const productsInCart = [];
+
+function addToCart(e) {
+
+    const ButtonId = e.currentTarget.id;
+    const productAdd = products.find(product => product.id === ButtonId);
+
+    if(productsInCart.some(product => product.id === ButtonId)) {
+
+    } else {
+        productAdd.amount = 1;
+        productsInCart.push(productAdd);
+    }
 
 
+
+}
 
