@@ -181,6 +181,7 @@ const products = [
 
 const productsContainer = document.querySelector("#products-container");
 const categoryButton = document.querySelectorAll(".category-button");
+const principalTitle = document.querySelector("#principal-title");
 
 function productsLoad(chooseProducts) {
 
@@ -214,117 +215,19 @@ categoryButton.forEach(button => {
         e.currentTarget.classList.add("active");
 
         if (e.currentTarget.id != "allproducts") {
+            const productCategory = products.find(product => product.category.id === e.currentTarget.id);
+            principalTitle.innerText = productCategory.category.name;
+
             const buttonProducts = products.filter(product => product.category.id === e.currentTarget.id);
-        productsLoad(buttonProducts);
+            productsLoad(buttonProducts);
         } else {
+            principalTitle.innerText = "All the products!"
             productsLoad(products);
         }
         
     })
-})
+});
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-const productsContainer = document.querySelector("#products-container");
-const categoryButton = document.querySelectorAll(".category-button");
-
-
-function productsLoad(chooseProducts) {
-
-    productsContainer.innerHTML = "";
-
-    chooseProducts.forEach(product => {
-
-        const div = document.createElement("div");
-        div.classList.add("product");
-        div.innerHTML = `
-            <img class="product-image" src="${product.image}" alt="${product.title}">
-            <div class="product-details">
-                <h3 class="product-title">${product.title}</h3>
-                <p class="product-price">${product.price}</p>
-                <button id="${product.id}" class="product-add">Add</button>
-            </div>
-        `;
-
-        productsContainer.append(div);
-    })
-}
-
-productsLoad(productsArray);
-
-categoryButton.forEach(button =>{
-    button.addEventListener("click", (e) =>{
-
-        categoryButton.forEach(button => button.classList.remove("active")); 
-        e.currentTarget.classList.add("active");
-
-        if(e.currentTarget.id != "all-products") {
-
-            const categoryProducts = productsArray.find(productsArray => product.category.id === e.currentTarget.id);
-            
-            principalTitle.innerHTML = "All the products!"; 
-
-            const buttonProducts = productsArray.filter(productsArray => product.category.id === e.currentTarget.id);
-            productsLoad(buttonProducts);
-        } else {
-            principalTitle.innerHTML = "All the products!";
-            productsLoad(productsArray);
-        }
-
-        
-
-    })
-}) 
-*/
