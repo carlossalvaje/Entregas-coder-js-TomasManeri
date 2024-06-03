@@ -183,6 +183,7 @@ const productsContainer = document.querySelector("#products-container");
 const categoryButton = document.querySelectorAll(".category-button");
 const principalTitle = document.querySelector("#principal-title");
 let addButton = document.querySelectorAll(".product-add");
+const miniNumber = document.querySelector("#little-number");
 
 function productsLoad(chooseProducts) {
 
@@ -242,17 +243,24 @@ const productsInCart = [];
 
 function addToCart(e) {
 
-    const ButtonId = e.currentTarget.id;
-    const productAdd = products.find(product => product.id === ButtonId);
+    const idButton = e.currentTarget.id;
+    const productsAdd = products.find(product => product.id === idButton);
 
-    if(productsInCart.some(product => product.id === ButtonId)) {
-
+    if(productsInCart.some(product => product.id === idButton)) {
+        const index = productsInCart.findIndex(product => product.id === idButton);
+        productsInCart[index].amount++;
     } else {
-        productAdd.amount = 1;
-        productsInCart.push(productAdd);
+        productsAdd.amount = 1;
+        productsInCart.push(productsAdd);
     }
 
+    refreshMiniNumber();
 
+    localStorage.setItem("products-in-cart", JSON.stringify(productsInCart));
+}
 
+function refreshMiniNumber() {
+    let newMiniNumber = productsInCart.reduce((acc, product) => acc + product.amount, 0);
+    miniNumber.innerHTML = newMiniNumber;
 }
 
