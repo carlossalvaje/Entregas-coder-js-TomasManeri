@@ -168,17 +168,6 @@ const products = [
 ];
 
 
-
-
-
-
-
-
-
-
-
-
-
 const productsContainer = document.querySelector("#products-container");
 const categoryButton = document.querySelectorAll(".category-button");
 const principalTitle = document.querySelector("#principal-title");
