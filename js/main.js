@@ -168,88 +168,156 @@ const products = [
 ];
 
 
-const productsContainer = document.querySelector("#products-container");
-const categoryButton = document.querySelectorAll(".category-button");
-const principalTitle = document.querySelector("#principal-title");
-let addButton = document.querySelectorAll(".product-add");
-const miniNumber = document.querySelector("#little-number");
 
-function productsLoad(chooseProducts) {
 
-    productsContainer.innerHTML = "";
 
-    chooseProducts.forEach(product => {
 
-        const div = document.createElement("div");
-        div.classList.add("product");
-        div.innerHTML = `
-            <img class="product-image" src="${product.image}" alt="${product.title}">
-            <div class="product-details">
-                <h3 class="product-title">${product.title}</h3>
-                <p class="product-price">${product.price}</p>
-                <button class="product-add"  id="${product.id}">Add</button>
-            </div>
-        `;
 
-        productsContainer.append(div);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const productsContainer = document.querySelector("#products-container");
+// const categoryButton = document.querySelectorAll(".category-button");
+// const principalTitle = document.querySelector("#principal-title");
+// let addButton = document.querySelectorAll(".product-add");
+// const miniNumber = document.querySelector("#little-number");
+
+// function productsLoad(chooseProducts) {
+
+//     productsContainer.innerHTML = "";
+
+//     chooseProducts.forEach(product => {
+
+//         const div = document.createElement("div");
+//         div.classList.add("product");
+//         div.innerHTML = `
+//             <img class="product-image" src="${product.image}" alt="${product.title}">
+//             <div class="product-details">
+//                 <h3 class="product-title">${product.title}</h3>
+//                 <p class="product-price">${product.price}</p>
+//                 <button class="product-add"  id="${product.id}">Add</button>
+//             </div>
+//         `;
+
+//         productsContainer.append(div);
     
-    })  
+//     })  
 
-    refreshAddButtons();
-}
+//     refreshAddButtons();
+// }
 
-productsLoad(products);
+// productsLoad(products);
 
-categoryButton.forEach(button => {
-    button.addEventListener("click", (e) => {
+// categoryButton.forEach(button => {
+//     button.addEventListener("click", (e) => {
         
-        categoryButton.forEach(button => button.classList.remove("active"));
-        e.currentTarget.classList.add("active");
+//         categoryButton.forEach(button => button.classList.remove("active"));
+//         e.currentTarget.classList.add("active");
 
-        if (e.currentTarget.id != "allproducts") {
-            const productCategory = products.find(product => product.category.id === e.currentTarget.id);
-            principalTitle.innerText = productCategory.category.name;
+//         if (e.currentTarget.id != "allproducts") {
+//             const productCategory = products.find(product => product.category.id === e.currentTarget.id);
+//             principalTitle.innerText = productCategory.category.name;
 
-            const buttonProducts = products.filter(product => product.category.id === e.currentTarget.id);
-            productsLoad(buttonProducts);
-        } else {
-            principalTitle.innerText = "All the products!"
-            productsLoad(products);
-        }
+//             const buttonProducts = products.filter(product => product.category.id === e.currentTarget.id);
+//             productsLoad(buttonProducts);
+//         } else {
+//             principalTitle.innerText = "All the products!"
+//             productsLoad(products);
+//         }
         
-    })
-});
+//     })
+// });
 
-function refreshAddButtons() {
-    addButton = document.querySelectorAll(".product-add");
+// function refreshAddButtons() {
+//     addButton = document.querySelectorAll(".product-add");
 
-    addButton.forEach(button => {
-        button.addEventListener("click", addToCart);
-    });
-}
+//     addButton.forEach(button => {
+//         button.addEventListener("click", addToCart);
+//     });
+// }
 
-const productsInCart = [];
+// const productsInCart = [];
 
-function addToCart(e) {
+// function addToCart(e) {
 
-    const idButton = e.currentTarget.id;
-    const productsAdd = products.find(product => product.id === idButton);
+//     const idButton = e.currentTarget.id;
+//     const productsAdd = products.find(product => product.id === idButton);
 
-    if(productsInCart.some(product => product.id === idButton)) {
-        const index = productsInCart.findIndex(product => product.id === idButton);
-        productsInCart[index].amount++;
-    } else {
-        productsAdd.amount = 1;
-        productsInCart.push(productsAdd);
-    }
+//     if(productsInCart.some(product => product.id === idButton)) {
+//         const index = productsInCart.findIndex(product => product.id === idButton);
+//         productsInCart[index].amount++;
+//     } else {
+//         productsAdd.amount = 1;
+//         productsInCart.push(productsAdd);
+//     }
 
-    refreshMiniNumber();
+//     refreshMiniNumber();
 
-    localStorage.setItem("products-in-cart", JSON.stringify(productsInCart));
-}
+//     localStorage.setItem("products-in-cart", JSON.stringify(productsInCart));
+// }
 
-function refreshMiniNumber() {
-    let newMiniNumber = productsInCart.reduce((acc, product) => acc + product.amount, 0);
-    miniNumber.innerHTML = newMiniNumber;
-}
+// function refreshMiniNumber() {
+//     let newMiniNumber = productsInCart.reduce((acc, product) => acc + product.amount, 0);
+//     miniNumber.innerHTML = newMiniNumber;
+// }
 
