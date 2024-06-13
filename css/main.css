@@ -211,7 +211,7 @@ main {
 .cart-clear {
     border: none;
     background-color: rgb(225, 225, 225);
-    color: rgb(98, 98, 98);
+    color: #626262;
     border-radius: 10px;
     padding: 10px;
     text-transform: uppercase;

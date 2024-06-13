@@ -43,6 +43,14 @@ a {
 
 
 .index-img-principal img{ 
-    height: 500px;
+    height: auto;
     width: 100%;
+    padding: 30px;
+}
+
+.index-separation {
+    display: flex;
+    background-color: #242424;
+    color: white;
+    justify-content: center;
 }
